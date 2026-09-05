@@ -1,0 +1,815 @@
+/* Espenser · landing
+   Los colores son los mismos tokens que usa la app, para que quien llega
+   desde aquí reconozca la app al abrirla. */
+
+:root {
+  --canvas: #f4f2ee;
+  --surface: #ffffff;
+  --surface-muted: #f6f5f2;
+  --text: #141413;
+  --text-secondary: #6b6862;
+  --text-tertiary: #9a968e;
+  --border: #e5e2db;
+  --border-strong: #d5d1c8;
+  --accent: #0f766e;
+  --accent-soft: #e3f0ee;
+  --danger: #c0392b;
+  --success: #1e7a5a;
+  --warning: #b45309;
+  --warning-soft: #fcf1e3;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --max: 1080px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+}
+
+.contenedor {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------------------------------------------------------------- cabecera */
+
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(244, 242, 238, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.barra .contenedor {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 64px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.marca .logo {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--canvas);
+  font-size: 17px;
+}
+
+.barra nav {
+  display: flex;
+  gap: 20px;
+}
+
+.barra nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.barra nav a:hover {
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .barra nav {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- botones */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--text);
+  color: var(--canvas);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.boton:hover {
+  background: #2c2b28;
+  transform: translateY(-1px);
+}
+
+.boton.secundario {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.boton.secundario:hover {
+  background: #d3e8e5;
+}
+
+/* ---------------------------------------------------------------- portada */
+
+.portada {
+  padding: 72px 0 40px;
+}
+
+.portada .contenedor {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.portada h1 {
+  margin: 18px 0 14px;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.portada p.entrada {
+  margin: 0 0 28px;
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 46ch;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.nota-descarga {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 900px) {
+  .portada .contenedor {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* ---------------------------------------------------------------- teléfono */
+
+.telefono {
+  justify-self: center;
+  width: 288px;
+  height: 580px;
+  padding: 12px;
+  border-radius: 40px;
+  background: #141413;
+  box-shadow: 0 30px 60px rgba(20, 20, 19, 0.22);
+}
+
+.pantalla {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background: var(--canvas);
+  overflow: hidden;
+}
+
+.pantalla .encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.escena {
+  position: absolute;
+  inset: 42px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+.escena.activa {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* ------------------------------------------------- piezas de las escenas */
+
+.tarjeta-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.tarjeta-mini .icono {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  flex: none;
+}
+
+/* En columna y no en línea: el título y su detalle son <span>, y sin esto
+   fluirían uno detrás de otro, pisando al monto de la derecha. Además el
+   recorte con puntos suspensivos solo funciona sobre elementos de bloque. */
+.tarjeta-mini .texto {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-mini .titulo {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tarjeta-mini .sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tarjeta-mini .monto {
+  font-size: 13px;
+  font-weight: 700;
+  flex: none;
+}
+
+.flecha {
+  display: grid;
+  place-items: center;
+  color: var(--text-tertiary);
+  font-size: 18px;
+}
+
+.globo {
+  max-width: 82%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+}
+
+.globo.usuario {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #fff;
+}
+
+.globo.asistente {
+  align-self: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.grafico {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 54px;
+  margin-top: 10px;
+}
+
+.grafico span {
+  width: 18px;
+  border-radius: 3px;
+  background: var(--accent);
+  height: 4px;
+}
+
+.comprobante {
+  width: 128px;
+  align-self: center;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.comprobante i {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  margin-bottom: 6px;
+}
+
+.comprobante strong {
+  font-size: 15px;
+}
+
+.barra-tope {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.barra-tope i {
+  display: block;
+  height: 100%;
+  width: 4%;
+  border-radius: 6px;
+  background: var(--accent);
+}
+
+.linea-tope {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.aviso-tope {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chip-confirmar {
+  align-self: center;
+  padding: 7px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--text);
+  color: var(--canvas);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------- animaciones de escena */
+
+@keyframes entrar-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes entrar-abajo {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes entrar-izquierda {
+  from {
+    opacity: 0;
+    transform: translateX(-32px) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes latir {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.93);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.escena.activa .anima-arriba {
+  animation: entrar-arriba 0.5s ease both;
+}
+
+.escena.activa .anima-abajo {
+  animation: entrar-abajo 0.5s ease both;
+}
+
+.escena.activa .anima-izquierda {
+  animation: entrar-izquierda 0.6s ease both;
+}
+
+.escena.activa .anima-latido {
+  animation: latir 1.1s ease-in-out infinite;
+}
+
+.escena.activa .anima-check {
+  animation: aparecer 0.4s 0.5s ease both;
+}
+
+.retraso-1 {
+  animation-delay: 0.45s !important;
+}
+
+.retraso-2 {
+  animation-delay: 0.75s !important;
+}
+
+/* ---------------------------------------------------------------- secciones */
+
+section {
+  padding: 64px 0;
+}
+
+.titulo-seccion {
+  max-width: 52ch;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.titulo-seccion h2 {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.4vw, 34px);
+  letter-spacing: -0.015em;
+}
+
+.titulo-seccion p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 17px;
+}
+
+/* ---------------------------------------------------- funcionalidades */
+
+.funciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.funcion {
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.funcion:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.funcion.activa {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.funcion .indice {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.funcion h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.funcion p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* ---------------------------------------------------------------- descarga */
+
+.descarga {
+  background: var(--text);
+  color: var(--canvas);
+  border-radius: 24px;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.descarga h2 {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.4vw, 34px);
+}
+
+.descarga p {
+  margin: 0 auto 26px;
+  max-width: 52ch;
+  color: rgba(244, 242, 238, 0.72);
+}
+
+.descarga .boton {
+  background: var(--canvas);
+  color: var(--text);
+}
+
+.descarga .boton:hover {
+  background: #fff;
+}
+
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 38px;
+  text-align: left;
+}
+
+.paso {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.paso b {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.paso span {
+  font-size: 14px;
+  color: rgba(244, 242, 238, 0.66);
+}
+
+/* ---------------------------------------------------------------- legal */
+
+.legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+}
+
+.legal h1 {
+  font-size: clamp(28px, 4vw, 38px);
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.legal .actualizado {
+  color: var(--text-tertiary);
+  font-size: 14px;
+  margin: 0 0 36px;
+}
+
+.legal h2 {
+  margin: 38px 0 12px;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+}
+
+.legal h3 {
+  margin: 24px 0 8px;
+  font-size: 17px;
+}
+
+.legal p,
+.legal li {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.legal li {
+  margin-bottom: 8px;
+}
+
+.legal .destacado {
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  border: 1px solid #cfe4e1;
+}
+
+.legal .destacado p {
+  color: #0b5b55;
+  margin: 0;
+}
+
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 8px;
+  font-size: 15px;
+}
+
+.legal th,
+.legal td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.legal th {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.legal td {
+  color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------- pie */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0 48px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+footer .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer nav {
+  display: flex;
+  gap: 18px;
+}
+
+footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--text);
+}
+
+/* Quien pide menos movimiento, menos movimiento recibe. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+/* ------------------------------------------------- escenas que se dibujan solas
+
+   Las barras del gráfico y la barra del tope se animaban desde JavaScript con
+   temporizadores. En React se reinician al remontar la escena, así que basta
+   con declararlas aquí: menos código y el mismo resultado. */
+
+@keyframes crecer-barra {
+  from {
+    height: 4px;
+  }
+  to {
+    height: var(--altura);
+  }
+}
+
+.escena.activa .grafico span {
+  height: 4px;
+  animation: crecer-barra 0.5s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.escena.activa .grafico span:nth-child(1) {
+  animation-delay: 0.7s;
+}
+.escena.activa .grafico span:nth-child(2) {
+  animation-delay: 0.83s;
+}
+.escena.activa .grafico span:nth-child(3) {
+  animation-delay: 0.96s;
+}
+.escena.activa .grafico span:nth-child(4) {
+  animation-delay: 1.09s;
+}
+
+@keyframes llenar-tope {
+  from {
+    width: 4%;
+    background: var(--accent);
+  }
+  92% {
+    background: var(--accent);
+  }
+  to {
+    width: 100%;
+    background: var(--danger);
+  }
+}
+
+@keyframes avisar-tope {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.escena.activa .barra-tope i {
+  animation: llenar-tope 2.4s 0.35s ease both;
+}
+
+.escena.activa .aviso-tope {
+  animation: avisar-tope 0.3s 2.3s ease both;
+}
